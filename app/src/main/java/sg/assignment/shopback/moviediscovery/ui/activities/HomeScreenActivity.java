@@ -104,6 +104,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
                     int total_item_count = layoutManager.getItemCount();
                     int last_visible_item = layoutManager.findLastVisibleItemPosition();
+                    int first_visible_item = layoutManager.findFirstVisibleItemPosition();
 
                     if (dy > 0 && last_visible_item >= total_item_count - 1 && hasNewUpdates) {
                         hasNewUpdates = false;
@@ -120,14 +121,14 @@ public class HomeScreenActivity extends AppCompatActivity {
                         }
                     }
 
-                    if (last_visible_item > 4 && scrollUpButton.getVisibility() != View.VISIBLE)
+                    if (first_visible_item > 0 && scrollUpButton.getVisibility() != View.VISIBLE)
                         activityHandler.post(new Runnable() {
                             @Override
                             public void run() {
                                 showScrollButton(true);
                             }
                         });
-                    else if (last_visible_item <= 4 && scrollUpButton.getVisibility() == View.VISIBLE)
+                    else if (first_visible_item == 0 && scrollUpButton.getVisibility() == View.VISIBLE)
                                     activityHandler.post(new Runnable() {
                                 @Override
                                 public void run () {
