@@ -154,8 +154,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         holder.movieTitle.setText(movie.getTitle());
         Glide.clear(holder.moviePoster);
         Glide.with(adapaterContext).load(movie.getPosterPath()).error(defaultImage).crossFade()
-            .diskCacheStrategy( DiskCacheStrategy.NONE )
-                .skipMemoryCache(true)
+            .diskCacheStrategy( DiskCacheStrategy.ALL )
+                .skipMemoryCache(false)
                 .into(holder.moviePoster);
         holder.clickView.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
