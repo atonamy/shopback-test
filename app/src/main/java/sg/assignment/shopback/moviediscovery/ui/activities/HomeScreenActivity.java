@@ -102,11 +102,10 @@ public class HomeScreenActivity extends AppCompatActivity {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 
-                if(dy > 0) {
                     int total_item_count = layoutManager.getItemCount();
                     int last_visible_item = layoutManager.findLastVisibleItemPosition();
 
-                    if (last_visible_item >= total_item_count - 1 && hasNewUpdates) {
+                    if (dy > 0 && last_visible_item >= total_item_count - 1 && hasNewUpdates) {
                         hasNewUpdates = false;
                         currentPage++;
                         if (currentPage > 0 && currentPage <= 1000) {
@@ -135,7 +134,6 @@ public class HomeScreenActivity extends AppCompatActivity {
                                     showScrollButton(false);
                                 }
                             });
-                }
             }
         });
 

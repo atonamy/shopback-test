@@ -15,7 +15,7 @@
     <string name="themoviedb_api_catalog_url">http://api.themoviedb.org/3/discover/movie</string>
     <string name="themoviedb_api_details_url">http://api.themoviedb.org/3/movie/</string>
     <string name="themoviedb_api_key">328c283cd27bd1877d9080ccb1604c91</string>
-    <string name="themoviedb_images_poster_url">http://image.tmdb.org/t/p/w500/</string>
+    <string name="themoviedb_images_poster_url">http://image.tmdb.org/t/p/w342/</string>
     <string name="themoviedb_images_backdrop_url">http://image.tmdb.org/t/p/w780/</string>
     <string name="cathay_cinema_url">http://www.cathaycineplexes.com.sg/movies/</string>
     <string name="title_activity_web_view">WebViewActivity</string>

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.andexert.library.RippleView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -151,7 +152,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         holder.movieReleaseDate.setText(adapaterContext.getString(R.string.release_date_header) + " "
                 + FormatterHelper.formatDate(movie.getReleaseDate()));
         holder.movieTitle.setText(movie.getTitle());
-        Glide.with(adapaterContext).load(movie.getPosterPath()).error(defaultImage).crossFade().into(holder.moviePoster);
+        Glide.clear(holder.moviePoster);
+        Glide.with(adapaterContext).load(movie.getPosterPath()).error(defaultImage).crossFade()
+            .diskCacheStrategy( DiskCacheStrategy.NONE )
+                .skipMemoryCache(true)
+                .into(holder.moviePoster);
         holder.clickView.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleView rippleView) {
