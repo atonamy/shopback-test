@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top"
+    >
+    <com.andexert.library.RippleView
+        android:id="@+id/ripple_effect"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        rv_centered="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:background="#fff"
+        android:layout_marginLeft="1px"
+        android:layout_marginRight="1px"
+        android:layout_marginTop="1px"
+        android:layout_marginBottom="1px"
+        android:orientation="vertical"
+        android:gravity="top|center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/item_movie_poster"
+                android:layout_width="136dp"
+                android:layout_height="204dp"
+                android:scaleType="fitStart"
+                android:gravity="center"
+                />
+
+                <sg.assignment.shopback.moviediscovery.ui.views.AppTextView
+                    android:id="@+id/item_movie_title"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/colorTex"
+
+                    />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="7dp">
+
+                <sg.assignment.shopback.moviediscovery.ui.views.AppTextView
+                    android:textSize="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/popularity_header"
+                    android:gravity="center"
+                    android:textColor="@color/colorTex"
+                    android:textStyle="bold"
+                    />
+
+                <sg.assignment.shopback.moviediscovery.ui.views.AppTextView
+                    android:id="@+id/_item_movie_popularity"
+                    android:maxLines="2"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:background="@drawable/popularity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1.0000"
+                    android:padding="5dp"
+                    android:layout_marginLeft="3dp"
+                    android:textColor="#fff"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+
+                <sg.assignment.shopback.moviediscovery.ui.views.AppTextView
+                    android:id="@+id/item_movie_release_date"
+                    android:textSize="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/release_date_header"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/colorSub"
+                    />
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    </com.andexert.library.RippleView>
+</LinearLayout>

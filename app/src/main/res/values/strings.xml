@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Movie Discovery</string>
+    <string name="title_activity_detail_screen">Movie Details</string>
+    <string name="popularity_header">Popularity:</string>
+    <string name="release_date_header">Release date:</string>
+    <string name="title_header">MOVIE TITLE</string>
+    <string name="synopsis_header">SYNOPSIS</string>
+    <string name="genres_header">GENRES</string>
+    <string name="languages_header">LANGUAGES</string>
+    <string name="duration_header">DURATION</string>
+    <string name="duration_unit">min</string>
+    <string name="book_movie">BOOK THE MOVIE</string>
+    <string name="error_title">OOPS!</string>
+    <string name="error_no_internet">No internet. Please check your connection and try again.</string>
+    <string name="themoviedb_api_catalog_url">http://api.themoviedb.org/3/discover/movie</string>
+    <string name="themoviedb_api_details_url">http://api.themoviedb.org/3/movie/</string>
+    <string name="themoviedb_api_key">328c283cd27bd1877d9080ccb1604c91</string>
+    <string name="themoviedb_images_poster_url">http://image.tmdb.org/t/p/w500/</string>
+    <string name="themoviedb_images_backdrop_url">http://image.tmdb.org/t/p/w780/</string>
+    <string name="cathay_cinema_url">http://www.cathaycineplexes.com.sg/movies/</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="menu_open_browser">Open in the browser</string>
+    <string name="no_webbrowser_title">No Webrowser</string>
+    <string name="no_webbrowser_message">No Webrowser. No application can handle this request. Please install a webbrowser</string>
+
+</resources>
