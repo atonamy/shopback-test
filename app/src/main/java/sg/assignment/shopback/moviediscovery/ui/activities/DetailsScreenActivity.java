@@ -21,6 +21,7 @@ import android.widget.ImageView;
 
 import com.andexert.library.RippleView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tuyenmonkey.mkloader.MKLoader;
 
 import java.util.Dictionary;
@@ -197,7 +198,7 @@ public class DetailsScreenActivity extends AppCompatActivity {
     }
 
     protected void fetchMovieDetails() {
-        backdropImage.setImageBitmap(null);
+        backdropImage.setImageResource(0);
         showContent(false);
         Movie movie = restoreMovie();
         MovieApi api = new MovieApi(this);
@@ -230,7 +231,10 @@ public class DetailsScreenActivity extends AppCompatActivity {
 
     protected void populateMovieDetails(MovieDetails movieDetails) {
         Drawable defaultImage = ContextCompat.getDrawable(this, R.drawable.loading_failed);
-        Glide.with(this).load(movieDetails.getBackdropPath()).error(defaultImage).crossFade().into(backdropImage);
+        Glide.with(this).load(movieDetails.getBackdropPath()).error(defaultImage).crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true).into(backdropImage);
+
 
         movieTitle.setText(movieDetails.getIntro().getTitle());
         releaseDate.setText(getString(R.string.release_date_header) + " " +
