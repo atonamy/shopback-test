@@ -101,23 +101,41 @@ public class HomeScreenActivity extends AppCompatActivity {
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                int total_item_count = layoutManager.getItemCount();
-                int last_visible_item = layoutManager.findLastVisibleItemPosition();
 
-                if (dy > 0 && last_visible_item >= total_item_count-1 && hasNewUpdates) {
-                    hasNewUpdates = false;
-                    currentPage++;
-                    if(currentPage > 0 && currentPage <= 1000)
-                    {
-                        adapter.setFooter(inflater.inflate(R.layout.movie_item_footer, null));
-                        populateMovies(currentPage, adapter);
+                if(dy > 0) {
+                    int total_item_count = layoutManager.getItemCount();
+                    int last_visible_item = layoutManager.findLastVisibleItemPosition();
+
+                    if (last_visible_item >= total_item_count - 1 && hasNewUpdates) {
+                        hasNewUpdates = false;
+                        currentPage++;
+                        if (currentPage > 0 && currentPage <= 1000) {
+                            activityHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    adapter.setFooter(inflater.inflate(R.layout.movie_item_footer, null));
+                                    populateMovies(currentPage, adapter);
+                                }
+                            });
+
+                        }
                     }
-                }
 
-                if(last_visible_item > 4 && scrollUpButton.getVisibility() != View.VISIBLE)
-                    showScrollButton(true);
-                else if(last_visible_item <= 4 && scrollUpButton.getVisibility() == View.VISIBLE)
-                    showScrollButton(false);
+                    if (last_visible_item > 4 && scrollUpButton.getVisibility() != View.VISIBLE)
+                        activityHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                showScrollButton(true);
+                            }
+                        });
+                    else if (last_visible_item <= 4 && scrollUpButton.getVisibility() == View.VISIBLE)
+                                    activityHandler.post(new Runnable() {
+                                @Override
+                                public void run () {
+                                    showScrollButton(false);
+                                }
+                            });
+                }
             }
         });
 
