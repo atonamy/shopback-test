@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +76,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
 
+    private final String TAG = getClass().getSimpleName().toString();
     private List<Movie> allMovies;
     private View footerView;
     private Context adapaterContext;
@@ -92,18 +94,18 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if(movies == null || movies.size() == 0)
             return;
         int position = allMovies.size();
-        allMovies.addAll(movies);
+        allMovies.addAll(position, movies);
         notifyItemRangeInserted(position, movies.size());
     }
 
     public void setFooter(View footer){
         boolean new_footer = (footerView == null) ? true : false;
         footerView = footer;
-        if(new_footer)
+        if(new_footer && footer != null)
             notifyItemInserted(allMovies.size());
-        else if(footer == null)
+        else if(footer == null && !new_footer)
             notifyItemRemoved(allMovies.size());
-        else
+        else if(!new_footer && footer != null)
             notifyItemChanged(allMovies.size());
     }
 
@@ -142,9 +144,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     protected void bindMovieViewHolder(MovieViewHolder holder, final int position) {
-        DecimalFormat precision = new DecimalFormat("0.0000");
         Drawable defaultImage = ContextCompat.getDrawable(adapaterContext, R.drawable.loading_failed);
         final Movie movie = getItem(position);
+        Log.d(TAG, "position: " + position +", id: " + movie.getId() + ", title: " + movie.getTitle());
         if(movie == null)
             throw new RuntimeException("Invalid movie item position");
 

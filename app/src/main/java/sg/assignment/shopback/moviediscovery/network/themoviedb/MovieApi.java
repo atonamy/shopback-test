@@ -85,7 +85,7 @@ public class MovieApi {
 
         JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
                 String.format(url + "?api_key=%s" +
-                        "&primary_release_date.lte=%s&sort_by=%s&page=%s",
+                                "&primary_release_date.lte=%s&sort_by=%s&page=%s",
                         key, FormatterHelper.formatDate(new Date()), sorting, page),
                 null, new Response.Listener<JSONObject>() {
 
@@ -130,7 +130,6 @@ public class MovieApi {
                 result.onError(error.getMessage());
             }
         });
-
 
         VolleyManager.getRequestQueue().add(jsonReq);
     }
@@ -196,7 +195,6 @@ public class MovieApi {
                 result.onError(error.getMessage());
             }
         });
-
 
         VolleyManager.getRequestQueue().add(jsonReq);
     }
