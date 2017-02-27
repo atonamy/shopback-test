@@ -85,7 +85,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public MoviesAdapter(Context context) {
         if(context == null)
             throw new NullPointerException("Adapter context cannot be null");
-        allMovies = new RealmList<>();
+        allMovies = new RealmList<Movie>();
         footerView = null;
         adapaterContext = context;
     }
@@ -93,7 +93,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void addMovies(List<Movie> movies) {
         if(movies == null || movies.size() == 0)
             return;
-        int position = allMovies.size();
+        int position = 0;
+        position = allMovies.size();
         allMovies.addAll(position, movies);
         notifyItemRangeInserted(position, movies.size());
     }
@@ -101,12 +102,13 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void setFooter(View footer){
         boolean new_footer = (footerView == null) ? true : false;
         footerView = footer;
+        int position = allMovies.size();
         if(new_footer && footer != null)
-            notifyItemInserted(allMovies.size());
+            notifyItemInserted(position);
         else if(footer == null && !new_footer)
-            notifyItemRemoved(allMovies.size());
+            notifyItemRemoved(position);
         else if(!new_footer && footer != null)
-            notifyItemChanged(allMovies.size());
+            notifyItemChanged(position);
     }
 
     public void clear() {

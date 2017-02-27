@@ -131,6 +131,7 @@ public class MovieApi {
             }
         });
 
+        jsonReq.setShouldCache(false);
         VolleyManager.getRequestQueue().add(jsonReq);
     }
 
@@ -196,6 +197,7 @@ public class MovieApi {
             }
         });
 
+        jsonReq.setShouldCache(false);
         VolleyManager.getRequestQueue().add(jsonReq);
     }
 
